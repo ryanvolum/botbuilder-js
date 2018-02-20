@@ -1,0 +1,15 @@
+{
+  "name": "botbuilder-filter-middleware",
+  "version": "0.0.1",
+  "description": "A BotBuilder v4 extension for filtering middleware using a developer-defined predicate",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "dependencies": {
+    "botbuilder": "^4.0.0-m1.4"
+  }
+}
