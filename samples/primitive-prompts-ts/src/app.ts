@@ -22,7 +22,12 @@ interface PromptBotState {
 
 // Add conversation state middleware
 const conversationState = new ConversationState<PromptBotState>(new MemoryStorage());
-adapter.use(conversationState);
+adapter.use(conversationState)
+    .use(async (context, next) => {
+        await context.sendActivity("{");
+        await next();
+        await context.sendActivity("}");
+    })
 
 // Listen for incoming requests 
 server.post(`/api/messages`, (req, res) => {
@@ -62,6 +67,6 @@ server.post(`/api/messages`, (req, res) => {
             // Now that we have age and name, greet the user!
             return context.sendActivity(`Hello ${state.name}! You are ${state.age} years old.`);
 
-        } 
+        }
     });
 });

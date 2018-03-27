@@ -22,7 +22,12 @@ const adapter = new botbuilder_1.BotFrameworkAdapter({
 });
 // Add conversation state middleware
 const conversationState = new botbuilder_1.ConversationState(new botbuilder_1.MemoryStorage());
-adapter.use(conversationState);
+adapter.use(conversationState)
+    .use((context, next) => __awaiter(this, void 0, void 0, function* () {
+    yield context.sendActivity("{");
+    yield next();
+    yield context.sendActivity("}");
+}));
 // Listen for incoming requests 
 server.post(`/api/messages`, (req, res) => {
     // Route received request to adapter for processing
